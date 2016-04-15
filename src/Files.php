@@ -1,19 +1,18 @@
 <?php
 /**
- * mithra62 - Backup Pro
+ * Jaeger
  *
- * @author		Eric Lamb <eric@mithra62.com>
- * @copyright	Copyright (c) 2015, mithra62, Eric Lamb.
- * @link		http://mithra62.com/
- * @version		3.0
- * @filesource 	./mithra62/Files.php
+ * @copyright	Copyright (c) 2015-2016, mithra62
+ * @link		http://jaeger-app.com
+ * @version		1.0
+ * @filesource 	./Compress.php
  */
-namespace mithra62;
+namespace JaegerApp;
 
-use mithra62\Exceptions\FileException;
+use JaegerApp\Exceptions\FileException;
 
 /**
- * mithra62 - Files Object
+ * Jaeger - Files Object
  *
  * Contains methods for interacting with the file system and files directly
  *
