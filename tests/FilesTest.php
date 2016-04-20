@@ -68,7 +68,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     {
         $file = new Files();
         $path = $this->dataPath() . DIRECTORY_SEPARATOR . 'languages';
-        $destination = $this->dataPath() . DIRECTORY_SEPARATOR . 'file_test';
+        $destination = $this->getWorkingDir() . DIRECTORY_SEPARATOR . 'file_test';
         $file->copyDir($path, $destination);
         $this->assertFileExists($destination);
         return $destination;
