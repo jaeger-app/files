@@ -9,6 +9,7 @@ php:
  
 before_script:
   - mkdir tests/data/working_dir
+  - chmod -R 0777 tests/data/working_dir
   - composer self-update
   - composer install --prefer-source --no-interaction
  
