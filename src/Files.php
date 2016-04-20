@@ -321,7 +321,7 @@ class Files
      */
     public function getFilenames($source_dir, $include_path = true, $recursion = true)
     {
-        $fp = @opendir($source_dir);
+        $fp = opendir($source_dir);
         if ($fp) {
             // reset the array and make sure $source_dir has a trailing slash on the initial call
             if ($recursion === false) {
