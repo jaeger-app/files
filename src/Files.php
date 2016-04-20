@@ -74,7 +74,7 @@ class Files
      */
     public function write($path, $data, $mode = 'w+')
     {
-        if (! $fp = @fopen($path, $mode)) {
+        if (! $fp = fopen($path, $mode)) {
             throw new FileException('Can\'t open the file for writing! ' . $path);
         }
         
@@ -131,14 +131,14 @@ class Files
         // Trim the trailing slash
         $path = rtrim($path, DIRECTORY_SEPARATOR);
         
-        if (! $current_dir = @opendir($path)) {
+        if (! $current_dir = opendir($path)) {
             return false;
         }
         
         $exclude[] = '.';
         $exclude[] = '..';
         
-        while (false !== ($filename = @readdir($current_dir))) {
+        while (false !== ($filename = readdir($current_dir))) {
             if (! in_array($filename, $exclude)) {
                 if (is_dir($path . DIRECTORY_SEPARATOR . $filename)) {
                     if (substr($filename, 0, 1) != '.') {
@@ -149,10 +149,10 @@ class Files
                 }
             }
         }
-        @closedir($current_dir);
+        closedir($current_dir);
         
         if ($del_dir == true && $level >= 0) {
-            return @rmdir($path);
+            return rmdir($path);
         }
         
         return true;
@@ -330,10 +330,10 @@ class Files
             }
             
             while (false !== ($file = readdir($fp))) {
-                if (@is_dir($source_dir . $file) && strncmp($file, '.', 1) !== 0) {
+                if (is_dir($source_dir . $file) && strncmp($file, '.', 1) !== 0) {
                     $this->getFilenames($source_dir . $file . DIRECTORY_SEPARATOR, $include_path, TRUE);
                 } elseif (strncmp($file, '.', 1) !== 0) {
-                    $filedata = ($include_path == TRUE) ? $source_dir . DIRECTORY_SEPARATOR . $file : $file;
+                    $filedata = ($include_path === TRUE) ? $source_dir . DIRECTORY_SEPARATOR . $file : $file;
                     $this->setFileData($filedata);
                 }
             }
