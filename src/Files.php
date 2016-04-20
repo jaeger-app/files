@@ -151,7 +151,7 @@ class Files
         }
         @closedir($current_dir);
         
-        if ($del_dir == true and $level >= 0) {
+        if ($del_dir == true && $level >= 0) {
             return @rmdir($path);
         }
         
@@ -173,7 +173,7 @@ class Files
      * @return string
      */
     public function filesizeFormat($val, $digits = 3, $mode = "IEC", $bB = "B")
-    { // $mode == "SI"|"IEC", $bB == "b"|"B"
+    {
         $si = array(
             "",
             "k",
@@ -317,7 +317,7 @@ class Files
      *            Whether to include the full path or jsut file name
      * @param boolean $recursion
      *            Whether to drill down into further directories
-     * @return multitype:Ambigous <string, string> |boolean
+     * @return array|boolean
      */
     public function getFilenames($source_dir, $include_path = true, $recursion = true)
     {
