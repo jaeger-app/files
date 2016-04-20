@@ -305,7 +305,6 @@ class Files
             }
         }
         fclose($fd);
-        exit();
     }
 
     /**
