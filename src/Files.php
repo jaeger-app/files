@@ -356,9 +356,7 @@ class Files
     {
         foreach ($iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(trim($dir), \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST) as $item) {
             
-            if ($item->isDir()) {
-                
-                echo $destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
+            if ($item->isDir() && !file_exists($destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName())) {
                 mkdir($destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName(), '0777', true);
             } else {
                 copy($item, $destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
