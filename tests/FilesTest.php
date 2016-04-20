@@ -64,67 +64,6 @@ class FilesTest extends \PHPUnit_Framework_TestCase
         return $test_file;
     }
 
-    public function testCopyDir()
-    {
-        $file = new Files();
-        $path = $this->dataPath() . DIRECTORY_SEPARATOR . 'languages';
-        $destination = $this->getWorkingDir() . DIRECTORY_SEPARATOR . 'file_test';
-        $file->copyDir($path, $destination);
-        $this->assertFileExists($destination);
-        return $destination;
-    }
-
-    /**
-     * @depends testCopyDir
-     */
-    public function testGetFilenames($destination)
-    {
-        $file = new Files();
-        $file_data = $file->getFilenames($destination);
-        
-        return $destination;
-    }
-
-    /**
-     * @depends testGetFilenames
-     */
-    public function testRemoveDir($destination)
-    {
-        $file = new Files();
-        $file_data = $file->deleteDir($destination, true);
-        
-        $this->assertFileNotExists($destination);
-        return $destination;
-    }
-
-    /**
-     * Tests the various states of the $file->file_data container
-     */
-    public function testFileData()
-    {
-        // check defaults
-        $file = new Files();
-        $this->assertEmpty($file->getFileData());
-        
-        // check adding works
-        $file_data = array(
-            'Foo',
-            'Bar'
-        );
-        foreach ($file_data as $data) {
-            $file->setFileData($data);
-        }
-        
-        $this->assertNotEmpty($file->getFileData());
-        $this->assertContains('Foo', $file->getFileData());
-        $this->assertContains('Bar', $file->getFileData());
-        $this->assertCount(2, $file->getFileData());
-        
-        // check breakdown
-        $file->setFileData(false, true);
-        $this->assertEmpty($file->getFileData());
-    }
-
     public function testFilesizeFormat()
     {
         $number = 555555;
