@@ -3,7 +3,7 @@
 	"description": "A simple file handling object.",
 	"require": {
 		"php": ">=5.4.0",
-		"jaeger-app/exceptions": "dev-master"
+		"jaeger-app/exceptions": "^0.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "4.*"
