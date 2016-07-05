@@ -141,9 +141,7 @@ class Files
         while (false !== ($filename = readdir($current_dir))) {
             if (! in_array($filename, $exclude)) {
                 if (is_dir($path . DIRECTORY_SEPARATOR . $filename)) {
-                    if (substr($filename, 0, 1) != '.') {
-                        $this->deleteDir($path . DIRECTORY_SEPARATOR . $filename, $del_dir, $level + 1, $exclude);
-                    }
+                    $this->deleteDir($path . DIRECTORY_SEPARATOR . $filename, $del_dir);
                 } else {
                     $this->delete($path . DIRECTORY_SEPARATOR . $filename);
                 }
@@ -151,7 +149,7 @@ class Files
         }
         closedir($current_dir);
         
-        if ($del_dir == true && $level >= 0) {
+        if ($del_dir == true) {
             return rmdir($path);
         }
         
